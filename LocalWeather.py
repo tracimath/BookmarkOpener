@@ -9,7 +9,7 @@ from bs4 import SoupStrainer
 
 # Use ipinfo.io website to fetch information about user's location
 res = requests.get('http://ipinfo.io/json')
-print(res.status_code == requests.codes.ok)
+res.status_code == requests.codes.ok
 text = res.text
 
 # Parse the city and region from the page
@@ -28,22 +28,19 @@ region = region.replace('"', '')
 # Search for "city" "region" weather and store page in object
 keyword = 'https://www.google.com/search?hl=en&q=' + city + " "+ region + " weather"
 search_results = requests.get(keyword)
-print(res.status_code == requests.codes.ok)
+res.status_code == requests.codes.ok
 
 # Parse the html page with beautifulSoup
-soup = BeautifulSoup(search_results.content, "lxml")
+soup = BeautifulSoup(search_results.content, "html.parser")
 # Count is needed to print just the first result
 count = 0
-for link in soup.select(".r a"):
-    if count == 0:
+for link in soup.find_all("a"):
+    if count == 0 and ("weather.com" or "accuweather.com") in str(link):
         # Parse for search result link
         string = str(link)
         s = string.find("q=") + 2
         e = string[s+1+5:].find(":") + 1 + 5 + s
         final_link = string[s:e]
-        print(s)
-        print(e)
-        print(final_link)
         # Open search result link and add 1 to count
         webbrowser.open(final_link)
         count = count + 1
