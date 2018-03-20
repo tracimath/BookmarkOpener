@@ -1,5 +1,5 @@
 #1 python3
-# mapIt.py - Imports the bookmarks from the Chrome browser and opens them
+# BookmarksOpener.py - Imports the bookmarks from the Chrome browser and opens them
 # all at once as separate tabs in a new browser
 # ./BookmarksOpener.py <- fetches Chrome bookmarks
 # ./BookmarksOpener.py bookmarks.html 3
