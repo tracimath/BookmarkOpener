@@ -3,6 +3,10 @@
 # FreeTextbooks.py - Accepts the name of the textbook as a command-line argument
 # and downloads a PDF of the textbook to the user's computer.
 
+# IN PROGRESS: Need to create a check to ensure that the file format is indeed a PDF. Some links end in
+# ".pdf" but are not true PDFs.
+# Ensure that the program looks at more than just the first page of Google search results, if necessary.
+
 import webbrowser, sys, requests, PyPDF2, os
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
